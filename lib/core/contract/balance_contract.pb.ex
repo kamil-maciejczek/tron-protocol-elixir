@@ -1,6 +1,6 @@
 defmodule Protocol.FreezeBalanceContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :frozen_balance, 2, type: :int64, json_name: "frozenBalance"
@@ -10,7 +10,7 @@ defmodule Protocol.FreezeBalanceContract do
 end
 defmodule Protocol.UnfreezeBalanceContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :resource, 10, type: Protocol.ResourceCode, enum: true
@@ -18,13 +18,13 @@ defmodule Protocol.UnfreezeBalanceContract do
 end
 defmodule Protocol.WithdrawBalanceContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
 end
 defmodule Protocol.TransferContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :to_address, 2, type: :bytes, json_name: "toAddress"
@@ -32,7 +32,7 @@ defmodule Protocol.TransferContract do
 end
 defmodule Protocol.TransactionBalanceTrace.Operation do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :operation_identifier, 1, type: :int64, json_name: "operationIdentifier"
   field :address, 2, type: :bytes
@@ -40,7 +40,7 @@ defmodule Protocol.TransactionBalanceTrace.Operation do
 end
 defmodule Protocol.TransactionBalanceTrace do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transaction_identifier, 1, type: :bytes, json_name: "transactionIdentifier"
   field :operation, 2, repeated: true, type: Protocol.TransactionBalanceTrace.Operation
@@ -49,14 +49,14 @@ defmodule Protocol.TransactionBalanceTrace do
 end
 defmodule Protocol.BlockBalanceTrace.BlockIdentifier do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :hash, 1, type: :bytes
   field :number, 2, type: :int64
 end
 defmodule Protocol.BlockBalanceTrace do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :block_identifier, 1,
     type: Protocol.BlockBalanceTrace.BlockIdentifier,
@@ -71,20 +71,20 @@ defmodule Protocol.BlockBalanceTrace do
 end
 defmodule Protocol.AccountTrace do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :balance, 1, type: :int64
   field :placeholder, 99, type: :int64
 end
 defmodule Protocol.AccountIdentifier do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :address, 1, type: :bytes
 end
 defmodule Protocol.AccountBalanceRequest do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :account_identifier, 1, type: Protocol.AccountIdentifier, json_name: "accountIdentifier"
 
@@ -94,7 +94,7 @@ defmodule Protocol.AccountBalanceRequest do
 end
 defmodule Protocol.AccountBalanceResponse do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :balance, 1, type: :int64
 
@@ -104,7 +104,7 @@ defmodule Protocol.AccountBalanceResponse do
 end
 defmodule Protocol.FreezeBalanceV2Contract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :frozen_balance, 2, type: :int64, json_name: "frozenBalance"
@@ -112,7 +112,7 @@ defmodule Protocol.FreezeBalanceV2Contract do
 end
 defmodule Protocol.UnfreezeBalanceV2Contract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :unfreeze_balance, 2, type: :int64, json_name: "unfreezeBalance"
@@ -120,26 +120,33 @@ defmodule Protocol.UnfreezeBalanceV2Contract do
 end
 defmodule Protocol.WithdrawExpireUnfreezeContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
 end
 defmodule Protocol.DelegateResourceContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :resource, 2, type: Protocol.ResourceCode, enum: true
   field :balance, 3, type: :int64
   field :receiver_address, 4, type: :bytes, json_name: "receiverAddress"
   field :lock, 5, type: :bool
+  field :lock_period, 6, type: :int64, json_name: "lockPeriod"
 end
 defmodule Protocol.UnDelegateResourceContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :resource, 2, type: Protocol.ResourceCode, enum: true
   field :balance, 3, type: :int64
   field :receiver_address, 4, type: :bytes, json_name: "receiverAddress"
+end
+defmodule Protocol.CancelAllUnfreezeV2Contract do
+  @moduledoc false
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
+
+  field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
 end

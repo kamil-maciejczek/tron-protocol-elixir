@@ -1,6 +1,6 @@
 defmodule Protocol.Return.ResponseCode do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :SUCCESS, 0
   field :SIGERROR, 1
@@ -14,11 +14,12 @@ defmodule Protocol.Return.ResponseCode do
   field :SERVER_BUSY, 9
   field :NO_CONNECTION, 10
   field :NOT_ENOUGH_EFFECTIVE_CONNECTION, 11
+  field :BLOCK_UNSOLIDIFIED, 12
   field :OTHER_ERROR, 20
 end
 defmodule Protocol.TransactionSignWeight.Result.ResponseCode do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ENOUGH_PERMISSION, 0
   field :NOT_ENOUGH_PERMISSION, 1
@@ -29,7 +30,7 @@ defmodule Protocol.TransactionSignWeight.Result.ResponseCode do
 end
 defmodule Protocol.TransactionApprovedList.Result.ResponseCode do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :SUCCESS, 0
   field :SIGNATURE_FORMAT_ERROR, 1
@@ -38,7 +39,7 @@ defmodule Protocol.TransactionApprovedList.Result.ResponseCode do
 end
 defmodule Protocol.Return do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :result, 1, type: :bool
   field :code, 2, type: Protocol.Return.ResponseCode, enum: true
@@ -46,170 +47,176 @@ defmodule Protocol.Return do
 end
 defmodule Protocol.BlockReference do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :block_num, 1, type: :int64, json_name: "blockNum"
   field :block_hash, 2, type: :bytes, json_name: "blockHash"
 end
 defmodule Protocol.WitnessList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :witnesses, 1, repeated: true, type: Protocol.Witness
 end
 defmodule Protocol.ProposalList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :proposals, 1, repeated: true, type: Protocol.Proposal
 end
 defmodule Protocol.ExchangeList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :exchanges, 1, repeated: true, type: Protocol.Exchange
 end
 defmodule Protocol.AssetIssueList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :assetIssue, 1, repeated: true, type: Protocol.AssetIssueContract
 end
 defmodule Protocol.BlockList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :block, 1, repeated: true, type: Protocol.Block
 end
 defmodule Protocol.TransactionList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transaction, 1, repeated: true, type: Protocol.Transaction
 end
 defmodule Protocol.TransactionIdList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :txId, 1, repeated: true, type: :string
 end
 defmodule Protocol.DelegatedResourceMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :fromAddress, 1, type: :bytes
   field :toAddress, 2, type: :bytes
 end
 defmodule Protocol.DelegatedResourceList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :delegatedResource, 1, repeated: true, type: Protocol.DelegatedResource
 end
 defmodule Protocol.GetAvailableUnfreezeCountRequestMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
 end
 defmodule Protocol.GetAvailableUnfreezeCountResponseMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :count, 1, type: :int64
 end
 defmodule Protocol.CanDelegatedMaxSizeRequestMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :type, 1, type: :int32
   field :owner_address, 2, type: :bytes, json_name: "ownerAddress"
 end
 defmodule Protocol.CanDelegatedMaxSizeResponseMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :max_size, 1, type: :int64, json_name: "maxSize"
 end
 defmodule Protocol.CanWithdrawUnfreezeAmountRequestMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :timestamp, 2, type: :int64
 end
 defmodule Protocol.CanWithdrawUnfreezeAmountResponseMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :amount, 1, type: :int64
 end
+defmodule Protocol.PricesResponseMessage do
+  @moduledoc false
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
+
+  field :prices, 1, type: :string
+end
 defmodule Protocol.NodeList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :nodes, 1, repeated: true, type: Protocol.Node
 end
 defmodule Protocol.Node do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :address, 1, type: Protocol.Address
 end
 defmodule Protocol.Address do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :host, 1, type: :bytes
   field :port, 2, type: :int32
 end
 defmodule Protocol.EmptyMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 end
 defmodule Protocol.NumberMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :num, 1, type: :int64
 end
 defmodule Protocol.BytesMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :value, 1, type: :bytes
 end
 defmodule Protocol.TimeMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :beginInMilliseconds, 1, type: :int64
   field :endInMilliseconds, 2, type: :int64
 end
 defmodule Protocol.BlockReq do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :id_or_num, 1, type: :string, json_name: "idOrNum"
   field :detail, 2, type: :bool
 end
 defmodule Protocol.BlockLimit do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :startNum, 1, type: :int64
   field :endNum, 2, type: :int64
 end
 defmodule Protocol.TransactionLimit do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transactionId, 1, type: :bytes
   field :limitNum, 2, type: :int64
 end
 defmodule Protocol.AccountPaginated do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :account, 1, type: Protocol.Account
   field :offset, 2, type: :int64
@@ -217,7 +224,7 @@ defmodule Protocol.AccountPaginated do
 end
 defmodule Protocol.TimePaginatedMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :timeMessage, 1, type: Protocol.TimeMessage
   field :offset, 2, type: :int64
@@ -225,21 +232,21 @@ defmodule Protocol.TimePaginatedMessage do
 end
 defmodule Protocol.AccountNetMessage.AssetNetUsedEntry do
   @moduledoc false
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :key, 1, type: :string
   field :value, 2, type: :int64
 end
 defmodule Protocol.AccountNetMessage.AssetNetLimitEntry do
   @moduledoc false
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :key, 1, type: :string
   field :value, 2, type: :int64
 end
 defmodule Protocol.AccountNetMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :freeNetUsed, 1, type: :int64
   field :freeNetLimit, 2, type: :int64
@@ -261,21 +268,21 @@ defmodule Protocol.AccountNetMessage do
 end
 defmodule Protocol.AccountResourceMessage.AssetNetUsedEntry do
   @moduledoc false
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :key, 1, type: :string
   field :value, 2, type: :int64
 end
 defmodule Protocol.AccountResourceMessage.AssetNetLimitEntry do
   @moduledoc false
-  use Protobuf, map: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, map: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :key, 1, type: :string
   field :value, 2, type: :int64
 end
 defmodule Protocol.AccountResourceMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :freeNetUsed, 1, type: :int64
   field :freeNetLimit, 2, type: :int64
@@ -306,63 +313,14 @@ defmodule Protocol.AccountResourceMessage do
 end
 defmodule Protocol.PaginatedMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :offset, 1, type: :int64
   field :limit, 2, type: :int64
 end
-defmodule Protocol.EasyTransferMessage do
-  @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
-
-  field :passPhrase, 1, type: :bytes
-  field :toAddress, 2, type: :bytes
-  field :amount, 3, type: :int64
-end
-defmodule Protocol.EasyTransferAssetMessage do
-  @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
-
-  field :passPhrase, 1, type: :bytes
-  field :toAddress, 2, type: :bytes
-  field :assetId, 3, type: :string
-  field :amount, 4, type: :int64
-end
-defmodule Protocol.EasyTransferByPrivateMessage do
-  @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
-
-  field :privateKey, 1, type: :bytes
-  field :toAddress, 2, type: :bytes
-  field :amount, 3, type: :int64
-end
-defmodule Protocol.EasyTransferAssetByPrivateMessage do
-  @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
-
-  field :privateKey, 1, type: :bytes
-  field :toAddress, 2, type: :bytes
-  field :assetId, 3, type: :string
-  field :amount, 4, type: :int64
-end
-defmodule Protocol.EasyTransferResponse do
-  @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
-
-  field :transaction, 1, type: Protocol.Transaction
-  field :result, 2, type: Protocol.Return
-  field :txid, 3, type: :bytes
-end
-defmodule Protocol.AddressPrKeyPairMessage do
-  @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
-
-  field :address, 1, type: :string
-  field :privateKey, 2, type: :string
-end
 defmodule Protocol.TransactionExtention do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transaction, 1, type: Protocol.Transaction
   field :txid, 2, type: :bytes
@@ -380,14 +338,14 @@ defmodule Protocol.TransactionExtention do
 end
 defmodule Protocol.EstimateEnergyMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :result, 1, type: Protocol.Return
   field :energy_required, 2, type: :int64, json_name: "energyRequired"
 end
 defmodule Protocol.BlockExtention do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transactions, 1, repeated: true, type: Protocol.TransactionExtention
   field :block_header, 2, type: Protocol.BlockHeader, json_name: "blockHeader"
@@ -395,33 +353,33 @@ defmodule Protocol.BlockExtention do
 end
 defmodule Protocol.BlockListExtention do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :block, 1, repeated: true, type: Protocol.BlockExtention
 end
 defmodule Protocol.TransactionListExtention do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transaction, 1, repeated: true, type: Protocol.TransactionExtention
 end
 defmodule Protocol.BlockIncrementalMerkleTree do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :number, 1, type: :int64
   field :merkleTree, 2, type: Protocol.IncrementalMerkleTree
 end
 defmodule Protocol.TransactionSignWeight.Result do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :code, 1, type: Protocol.TransactionSignWeight.Result.ResponseCode, enum: true
   field :message, 2, type: :string
 end
 defmodule Protocol.TransactionSignWeight do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :permission, 1, type: Protocol.Permission
   field :approved_list, 2, repeated: true, type: :bytes, json_name: "approvedList"
@@ -431,14 +389,14 @@ defmodule Protocol.TransactionSignWeight do
 end
 defmodule Protocol.TransactionApprovedList.Result do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :code, 1, type: Protocol.TransactionApprovedList.Result.ResponseCode, enum: true
   field :message, 2, type: :string
 end
 defmodule Protocol.TransactionApprovedList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :approved_list, 2, repeated: true, type: :bytes, json_name: "approvedList"
   field :result, 4, type: Protocol.TransactionApprovedList.Result
@@ -446,7 +404,7 @@ defmodule Protocol.TransactionApprovedList do
 end
 defmodule Protocol.IvkDecryptParameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :start_block_index, 1, type: :int64, json_name: "startBlockIndex"
   field :end_block_index, 2, type: :int64, json_name: "endBlockIndex"
@@ -454,7 +412,7 @@ defmodule Protocol.IvkDecryptParameters do
 end
 defmodule Protocol.IvkDecryptAndMarkParameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :start_block_index, 1, type: :int64, json_name: "startBlockIndex"
   field :end_block_index, 2, type: :int64, json_name: "endBlockIndex"
@@ -464,7 +422,7 @@ defmodule Protocol.IvkDecryptAndMarkParameters do
 end
 defmodule Protocol.OvkDecryptParameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :start_block_index, 1, type: :int64, json_name: "startBlockIndex"
   field :end_block_index, 2, type: :int64, json_name: "endBlockIndex"
@@ -472,7 +430,7 @@ defmodule Protocol.OvkDecryptParameters do
 end
 defmodule Protocol.DecryptNotes.NoteTx do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :note, 1, type: Protocol.Note
   field :txid, 2, type: :bytes
@@ -480,13 +438,13 @@ defmodule Protocol.DecryptNotes.NoteTx do
 end
 defmodule Protocol.DecryptNotes do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :noteTxs, 1, repeated: true, type: Protocol.DecryptNotes.NoteTx
 end
 defmodule Protocol.DecryptNotesMarked.NoteTx do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :note, 1, type: Protocol.Note
   field :txid, 2, type: :bytes
@@ -495,13 +453,13 @@ defmodule Protocol.DecryptNotesMarked.NoteTx do
 end
 defmodule Protocol.DecryptNotesMarked do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :noteTxs, 1, repeated: true, type: Protocol.DecryptNotesMarked.NoteTx
 end
 defmodule Protocol.Note do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :value, 1, type: :int64
   field :payment_address, 2, type: :string, json_name: "paymentAddress"
@@ -510,7 +468,7 @@ defmodule Protocol.Note do
 end
 defmodule Protocol.SpendNote do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :note, 3, type: Protocol.Note
   field :alpha, 4, type: :bytes
@@ -519,13 +477,13 @@ defmodule Protocol.SpendNote do
 end
 defmodule Protocol.ReceiveNote do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :note, 1, type: Protocol.Note
 end
 defmodule Protocol.PrivateParameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transparent_from_address, 1, type: :bytes, json_name: "transparentFromAddress"
   field :ask, 2, type: :bytes
@@ -545,7 +503,7 @@ defmodule Protocol.PrivateParameters do
 end
 defmodule Protocol.PrivateParametersWithoutAsk do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transparent_from_address, 1, type: :bytes, json_name: "transparentFromAddress"
   field :ak, 2, type: :bytes
@@ -565,7 +523,7 @@ defmodule Protocol.PrivateParametersWithoutAsk do
 end
 defmodule Protocol.SpendAuthSigParameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ask, 1, type: :bytes
   field :tx_hash, 2, type: :bytes, json_name: "txHash"
@@ -573,7 +531,7 @@ defmodule Protocol.SpendAuthSigParameters do
 end
 defmodule Protocol.NfParameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :note, 1, type: Protocol.Note
   field :voucher, 2, type: Protocol.IncrementalMerkleVoucher
@@ -582,7 +540,7 @@ defmodule Protocol.NfParameters do
 end
 defmodule Protocol.ExpandedSpendingKeyMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ask, 1, type: :bytes
   field :nsk, 2, type: :bytes
@@ -590,33 +548,33 @@ defmodule Protocol.ExpandedSpendingKeyMessage do
 end
 defmodule Protocol.ViewingKeyMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ak, 1, type: :bytes
   field :nk, 2, type: :bytes
 end
 defmodule Protocol.IncomingViewingKeyMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ivk, 1, type: :bytes
 end
 defmodule Protocol.DiversifierMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :d, 1, type: :bytes
 end
 defmodule Protocol.IncomingViewingKeyDiversifierMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ivk, 1, type: Protocol.IncomingViewingKeyMessage
   field :d, 2, type: Protocol.DiversifierMessage
 end
 defmodule Protocol.PaymentAddressMessage do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :d, 1, type: Protocol.DiversifierMessage
   field :pkD, 2, type: :bytes
@@ -624,7 +582,7 @@ defmodule Protocol.PaymentAddressMessage do
 end
 defmodule Protocol.ShieldedAddressInfo do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :sk, 1, type: :bytes
   field :ask, 2, type: :bytes
@@ -639,7 +597,7 @@ defmodule Protocol.ShieldedAddressInfo do
 end
 defmodule Protocol.NoteParameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ak, 1, type: :bytes
   field :nk, 2, type: :bytes
@@ -649,20 +607,20 @@ defmodule Protocol.NoteParameters do
 end
 defmodule Protocol.SpendResult do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :result, 1, type: :bool
   field :message, 2, type: :string
 end
 defmodule Protocol.TransactionInfoList do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transactionInfo, 1, repeated: true, type: Protocol.TransactionInfo
 end
 defmodule Protocol.SpendNoteTRC20 do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :note, 1, type: Protocol.Note
   field :alpha, 2, type: :bytes
@@ -672,7 +630,7 @@ defmodule Protocol.SpendNoteTRC20 do
 end
 defmodule Protocol.PrivateShieldedTRC20Parameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ask, 1, type: :bytes
   field :nsk, 2, type: :bytes
@@ -698,7 +656,7 @@ defmodule Protocol.PrivateShieldedTRC20Parameters do
 end
 defmodule Protocol.PrivateShieldedTRC20ParametersWithoutAsk do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :ak, 1, type: :bytes
   field :nsk, 2, type: :bytes
@@ -724,7 +682,7 @@ defmodule Protocol.PrivateShieldedTRC20ParametersWithoutAsk do
 end
 defmodule Protocol.ShieldedTRC20Parameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :spend_description, 1,
     repeated: true,
@@ -743,7 +701,7 @@ defmodule Protocol.ShieldedTRC20Parameters do
 end
 defmodule Protocol.IvkDecryptTRC20Parameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :start_block_index, 1, type: :int64, json_name: "startBlockIndex"
   field :end_block_index, 2, type: :int64, json_name: "endBlockIndex"
@@ -759,7 +717,7 @@ defmodule Protocol.IvkDecryptTRC20Parameters do
 end
 defmodule Protocol.OvkDecryptTRC20Parameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :start_block_index, 1, type: :int64, json_name: "startBlockIndex"
   field :end_block_index, 2, type: :int64, json_name: "endBlockIndex"
@@ -773,7 +731,7 @@ defmodule Protocol.OvkDecryptTRC20Parameters do
 end
 defmodule Protocol.DecryptNotesTRC20.NoteTx do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :note, 1, type: Protocol.Note
   field :position, 2, type: :int64
@@ -785,13 +743,13 @@ defmodule Protocol.DecryptNotesTRC20.NoteTx do
 end
 defmodule Protocol.DecryptNotesTRC20 do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :noteTxs, 1, repeated: true, type: Protocol.DecryptNotesTRC20.NoteTx
 end
 defmodule Protocol.NfTRC20Parameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :note, 1, type: Protocol.Note
   field :ak, 2, type: :bytes
@@ -804,13 +762,13 @@ defmodule Protocol.NfTRC20Parameters do
 end
 defmodule Protocol.NullifierResult do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :is_spent, 1, type: :bool, json_name: "isSpent"
 end
 defmodule Protocol.ShieldedTRC20TriggerContractParameters do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :shielded_TRC20_Parameters, 1,
     type: Protocol.ShieldedTRC20Parameters,
@@ -912,6 +870,8 @@ defmodule Protocol.Wallet.Service do
 
   rpc :UnDelegateResource, Protocol.UnDelegateResourceContract, Protocol.TransactionExtention
 
+  rpc :CancelAllUnfreezeV2, Protocol.CancelAllUnfreezeV2Contract, Protocol.TransactionExtention
+
   rpc :UpdateAsset, Protocol.UpdateAssetContract, Protocol.Transaction
 
   rpc :UpdateAsset2, Protocol.UpdateAssetContract, Protocol.TransactionExtention
@@ -1002,6 +962,8 @@ defmodule Protocol.Wallet.Service do
 
   rpc :ListWitnesses, Protocol.EmptyMessage, Protocol.WitnessList
 
+  rpc :GetPaginatedNowWitnessList, Protocol.PaginatedMessage, Protocol.WitnessList
+
   rpc :GetDelegatedResource, Protocol.DelegatedResourceMessage, Protocol.DelegatedResourceList
 
   rpc :GetDelegatedResourceV2, Protocol.DelegatedResourceMessage, Protocol.DelegatedResourceList
@@ -1048,31 +1010,11 @@ defmodule Protocol.Wallet.Service do
 
   rpc :GetNextMaintenanceTime, Protocol.EmptyMessage, Protocol.NumberMessage
 
-  rpc :GetTransactionSign, Protocol.TransactionSign, Protocol.Transaction
-
-  rpc :GetTransactionSign2, Protocol.TransactionSign, Protocol.TransactionExtention
-
-  rpc :CreateAddress, Protocol.BytesMessage, Protocol.BytesMessage
-
-  rpc :EasyTransferAsset, Protocol.EasyTransferAssetMessage, Protocol.EasyTransferResponse
-
-  rpc :EasyTransferAssetByPrivate,
-      Protocol.EasyTransferAssetByPrivateMessage,
-      Protocol.EasyTransferResponse
-
-  rpc :EasyTransfer, Protocol.EasyTransferMessage, Protocol.EasyTransferResponse
-
-  rpc :EasyTransferByPrivate, Protocol.EasyTransferByPrivateMessage, Protocol.EasyTransferResponse
-
-  rpc :GenerateAddress, Protocol.EmptyMessage, Protocol.AddressPrKeyPairMessage
-
   rpc :GetTransactionInfoById, Protocol.BytesMessage, Protocol.TransactionInfo
 
   rpc :AccountPermissionUpdate,
       Protocol.AccountPermissionUpdateContract,
       Protocol.TransactionExtention
-
-  rpc :AddSign, Protocol.TransactionSign, Protocol.TransactionExtention
 
   rpc :GetTransactionSignWeight, Protocol.Transaction, Protocol.TransactionSignWeight
 
@@ -1159,6 +1101,12 @@ defmodule Protocol.Wallet.Service do
   rpc :GetPendingSize, Protocol.EmptyMessage, Protocol.NumberMessage
 
   rpc :GetBlock, Protocol.BlockReq, Protocol.BlockExtention
+
+  rpc :GetBandwidthPrices, Protocol.EmptyMessage, Protocol.PricesResponseMessage
+
+  rpc :GetEnergyPrices, Protocol.EmptyMessage, Protocol.PricesResponseMessage
+
+  rpc :GetMemoFee, Protocol.EmptyMessage, Protocol.PricesResponseMessage
 end
 
 defmodule Protocol.Wallet.Stub do
@@ -1174,6 +1122,8 @@ defmodule Protocol.WalletSolidity.Service do
   rpc :GetAccountById, Protocol.Account, Protocol.Account
 
   rpc :ListWitnesses, Protocol.EmptyMessage, Protocol.WitnessList
+
+  rpc :GetPaginatedNowWitnessList, Protocol.PaginatedMessage, Protocol.WitnessList
 
   rpc :GetAssetIssueList, Protocol.EmptyMessage, Protocol.AssetIssueList
 
@@ -1227,8 +1177,6 @@ defmodule Protocol.WalletSolidity.Service do
 
   rpc :GetTransactionInfoById, Protocol.BytesMessage, Protocol.TransactionInfo
 
-  rpc :GenerateAddress, Protocol.EmptyMessage, Protocol.AddressPrKeyPairMessage
-
   rpc :GetMerkleTreeVoucherInfo, Protocol.OutputPointInfo, Protocol.IncrementalMerkleVoucherInfo
 
   rpc :ScanNoteByIvk, Protocol.IvkDecryptParameters, Protocol.DecryptNotes
@@ -1268,6 +1216,10 @@ defmodule Protocol.WalletSolidity.Service do
   rpc :GetBurnTrx, Protocol.EmptyMessage, Protocol.NumberMessage
 
   rpc :GetBlock, Protocol.BlockReq, Protocol.BlockExtention
+
+  rpc :GetBandwidthPrices, Protocol.EmptyMessage, Protocol.PricesResponseMessage
+
+  rpc :GetEnergyPrices, Protocol.EmptyMessage, Protocol.PricesResponseMessage
 end
 
 defmodule Protocol.WalletSolidity.Stub do

@@ -1,12 +1,12 @@
 defmodule Protocol.AuthenticationPath do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :value, 1, repeated: true, type: :bool
 end
 defmodule Protocol.MerklePath do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :authentication_paths, 1,
     repeated: true,
@@ -18,27 +18,27 @@ defmodule Protocol.MerklePath do
 end
 defmodule Protocol.OutputPoint do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :hash, 1, type: :bytes
   field :index, 2, type: :int32
 end
 defmodule Protocol.OutputPointInfo do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :out_points, 1, repeated: true, type: Protocol.OutputPoint, json_name: "outPoints"
   field :block_num, 2, type: :int32, json_name: "blockNum"
 end
 defmodule Protocol.PedersenHash do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :content, 1, type: :bytes
 end
 defmodule Protocol.IncrementalMerkleTree do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :left, 1, type: Protocol.PedersenHash
   field :right, 2, type: Protocol.PedersenHash
@@ -46,7 +46,7 @@ defmodule Protocol.IncrementalMerkleTree do
 end
 defmodule Protocol.IncrementalMerkleVoucher do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :tree, 1, type: Protocol.IncrementalMerkleTree
   field :filled, 2, repeated: true, type: Protocol.PedersenHash
@@ -57,14 +57,14 @@ defmodule Protocol.IncrementalMerkleVoucher do
 end
 defmodule Protocol.IncrementalMerkleVoucherInfo do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :vouchers, 1, repeated: true, type: Protocol.IncrementalMerkleVoucher
   field :paths, 2, repeated: true, type: :bytes
 end
 defmodule Protocol.SpendDescription do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :value_commitment, 1, type: :bytes, json_name: "valueCommitment"
   field :anchor, 2, type: :bytes
@@ -75,7 +75,7 @@ defmodule Protocol.SpendDescription do
 end
 defmodule Protocol.ReceiveDescription do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :value_commitment, 1, type: :bytes, json_name: "valueCommitment"
   field :note_commitment, 2, type: :bytes, json_name: "noteCommitment"
@@ -86,7 +86,7 @@ defmodule Protocol.ReceiveDescription do
 end
 defmodule Protocol.ShieldedTransferContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transparent_from_address, 1, type: :bytes, json_name: "transparentFromAddress"
   field :from_amount, 2, type: :int64, json_name: "fromAmount"

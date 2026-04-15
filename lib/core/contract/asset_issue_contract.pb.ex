@@ -1,13 +1,13 @@
 defmodule Protocol.AssetIssueContract.FrozenSupply do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :frozen_amount, 1, type: :int64, json_name: "frozenAmount"
   field :frozen_days, 2, type: :int64, json_name: "frozenDays"
 end
 defmodule Protocol.AssetIssueContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :id, 41, type: :string
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
@@ -36,7 +36,7 @@ defmodule Protocol.AssetIssueContract do
 end
 defmodule Protocol.TransferAssetContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :asset_name, 1, type: :bytes, json_name: "assetName"
   field :owner_address, 2, type: :bytes, json_name: "ownerAddress"
@@ -45,13 +45,13 @@ defmodule Protocol.TransferAssetContract do
 end
 defmodule Protocol.UnfreezeAssetContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
 end
 defmodule Protocol.UpdateAssetContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :description, 2, type: :bytes
@@ -61,7 +61,7 @@ defmodule Protocol.UpdateAssetContract do
 end
 defmodule Protocol.ParticipateAssetIssueContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :to_address, 2, type: :bytes, json_name: "toAddress"

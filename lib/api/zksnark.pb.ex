@@ -1,13 +1,13 @@
 defmodule Protocol.ZksnarkResponse.Code do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :SUCCESS, 0
   field :FAILED, 1
 end
 defmodule Protocol.ZksnarkRequest do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :transaction, 1, type: Protocol.Transaction
   field :sighash, 2, type: :bytes
@@ -16,7 +16,7 @@ defmodule Protocol.ZksnarkRequest do
 end
 defmodule Protocol.ZksnarkResponse do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :code, 1, type: Protocol.ZksnarkResponse.Code, enum: true
 end

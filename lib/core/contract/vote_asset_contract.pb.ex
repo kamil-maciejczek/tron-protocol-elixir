@@ -1,6 +1,6 @@
 defmodule Protocol.VoteAssetContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :vote_address, 2, repeated: true, type: :bytes, json_name: "voteAddress"

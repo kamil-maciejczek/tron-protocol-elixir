@@ -1,6 +1,6 @@
 defmodule Protocol.SmartContract.ABI.Entry.EntryType do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :UnknownEntryType, 0
   field :Constructor, 1
@@ -12,7 +12,7 @@ defmodule Protocol.SmartContract.ABI.Entry.EntryType do
 end
 defmodule Protocol.SmartContract.ABI.Entry.StateMutabilityType do
   @moduledoc false
-  use Protobuf, enum: true, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, enum: true, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :UnknownMutabilityType, 0
   field :Pure, 1
@@ -22,7 +22,7 @@ defmodule Protocol.SmartContract.ABI.Entry.StateMutabilityType do
 end
 defmodule Protocol.SmartContract.ABI.Entry.Param do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :indexed, 1, type: :bool
   field :name, 2, type: :string
@@ -30,7 +30,7 @@ defmodule Protocol.SmartContract.ABI.Entry.Param do
 end
 defmodule Protocol.SmartContract.ABI.Entry do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :anonymous, 1, type: :bool
   field :constant, 2, type: :bool
@@ -46,13 +46,13 @@ defmodule Protocol.SmartContract.ABI.Entry do
 end
 defmodule Protocol.SmartContract.ABI do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :entrys, 1, repeated: true, type: Protocol.SmartContract.ABI.Entry
 end
 defmodule Protocol.SmartContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :origin_address, 1, type: :bytes, json_name: "originAddress"
   field :contract_address, 2, type: :bytes, json_name: "contractAddress"
@@ -68,7 +68,7 @@ defmodule Protocol.SmartContract do
 end
 defmodule Protocol.ContractState do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :energy_usage, 1, type: :int64, json_name: "energyUsage"
   field :energy_factor, 2, type: :int64, json_name: "energyFactor"
@@ -76,7 +76,7 @@ defmodule Protocol.ContractState do
 end
 defmodule Protocol.CreateSmartContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :new_contract, 2, type: Protocol.SmartContract, json_name: "newContract"
@@ -85,7 +85,7 @@ defmodule Protocol.CreateSmartContract do
 end
 defmodule Protocol.TriggerSmartContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :contract_address, 2, type: :bytes, json_name: "contractAddress"
@@ -96,14 +96,14 @@ defmodule Protocol.TriggerSmartContract do
 end
 defmodule Protocol.ClearABIContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :contract_address, 2, type: :bytes, json_name: "contractAddress"
 end
 defmodule Protocol.UpdateSettingContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :contract_address, 2, type: :bytes, json_name: "contractAddress"
@@ -111,7 +111,7 @@ defmodule Protocol.UpdateSettingContract do
 end
 defmodule Protocol.UpdateEnergyLimitContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :contract_address, 2, type: :bytes, json_name: "contractAddress"
@@ -119,7 +119,7 @@ defmodule Protocol.UpdateEnergyLimitContract do
 end
 defmodule Protocol.SmartContractDataWrapper do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :smart_contract, 1, type: Protocol.SmartContract, json_name: "smartContract"
   field :runtimecode, 2, type: :bytes

@@ -1,6 +1,6 @@
 defmodule Protocol.ExchangeCreateContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :first_token_id, 2, type: :bytes, json_name: "firstTokenId"
@@ -10,7 +10,7 @@ defmodule Protocol.ExchangeCreateContract do
 end
 defmodule Protocol.ExchangeInjectContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :exchange_id, 2, type: :int64, json_name: "exchangeId"
@@ -19,7 +19,7 @@ defmodule Protocol.ExchangeInjectContract do
 end
 defmodule Protocol.ExchangeWithdrawContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :exchange_id, 2, type: :int64, json_name: "exchangeId"
@@ -28,7 +28,7 @@ defmodule Protocol.ExchangeWithdrawContract do
 end
 defmodule Protocol.ExchangeTransactionContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :exchange_id, 2, type: :int64, json_name: "exchangeId"

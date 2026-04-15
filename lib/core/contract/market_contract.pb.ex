@@ -1,6 +1,6 @@
 defmodule Protocol.MarketSellAssetContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :sell_token_id, 2, type: :bytes, json_name: "sellTokenId"
@@ -10,7 +10,7 @@ defmodule Protocol.MarketSellAssetContract do
 end
 defmodule Protocol.MarketCancelOrderContract do
   @moduledoc false
-  use Protobuf, protoc_gen_elixir_version: "0.10.0", syntax: :proto3
+  use Protobuf, syntax: :proto3, protoc_gen_elixir_version: "0.10.0"
 
   field :owner_address, 1, type: :bytes, json_name: "ownerAddress"
   field :order_id, 2, type: :bytes, json_name: "orderId"
