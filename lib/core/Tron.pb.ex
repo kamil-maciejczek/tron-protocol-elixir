@@ -622,7 +622,6 @@ defmodule Protocol.Transaction.Contract do
 
   field :type, 1, type: Protocol.Transaction.Contract.ContractType, enum: true
   field :parameter, 2, type: Google.Protobuf.Any
-  field :provider, 3, type: :bytes
   field :ContractName, 4, type: :bytes
   field :Permission_id, 5, type: :int32, json_name: "PermissionId"
 end
@@ -676,12 +675,6 @@ defmodule Protocol.Transaction.Raw do
   field :auths, 9, repeated: true, type: Protocol.Authority
   field :data, 10, type: :bytes
   field :contract, 11, repeated: true, type: Protocol.Transaction.Contract
-  # NOTE: field :scripts, 12, type: :bytes — removed intentionally.
-  # Upstream java-tron Tron.proto has `bytes scripts = 12;` commented "scripts not used",
-  # and no Elixir consumer reads the value. Some mainnet transactions emit field 12 as
-  # wire_type 0 (varint) instead of 2 (length-delimited bytes), which makes the strict
-  # Protobuf decoder raise DecodeError. Removing the declaration lets the decoder skip
-  # field 12 as an unknown field regardless of wire_type.
   field :timestamp, 14, type: :int64
   field :fee_limit, 18, type: :int64, json_name: "feeLimit"
 end

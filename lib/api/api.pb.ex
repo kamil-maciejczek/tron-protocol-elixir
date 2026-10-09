@@ -713,7 +713,7 @@ defmodule Protocol.IvkDecryptTRC20Parameters do
   field :ivk, 4, type: :bytes
   field :ak, 5, type: :bytes
   field :nk, 6, type: :bytes
-  field :events, 7, repeated: true, type: :string
+  field :events, 7, repeated: true, type: :string, deprecated: true
 end
 defmodule Protocol.OvkDecryptTRC20Parameters do
   @moduledoc false
@@ -727,7 +727,7 @@ defmodule Protocol.OvkDecryptTRC20Parameters do
     type: :bytes,
     json_name: "shieldedTRC20ContractAddress"
 
-  field :events, 5, repeated: true, type: :string
+  field :events, 5, repeated: true, type: :string, deprecated: true
 end
 defmodule Protocol.DecryptNotesTRC20.NoteTx do
   @moduledoc false
